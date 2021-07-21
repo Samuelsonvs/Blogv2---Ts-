@@ -3,13 +3,12 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import Navbar from "@/components/layouts/Navbar";
+import { ContainerProps } from "@/interfaces/interface";
 
-interface ContainerProps {
-  children: JSX.Element
-  customMeta?: string
-}
-
-export default function Container({children, ...customMeta}: ContainerProps): JSX.Element {
+export default function Container({
+  children,
+  ...customMeta
+}: ContainerProps): JSX.Element {
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
 
@@ -23,7 +22,7 @@ export default function Container({children, ...customMeta}: ContainerProps): JS
     image: "",
     type: "website",
     ...customMeta,
-    date: "02.02.02"
+    date: "02.02.02",
   };
 
   return (
@@ -49,13 +48,14 @@ export default function Container({children, ...customMeta}: ContainerProps): JS
           <meta property="article:published_time" content={meta.date} />
         )}
       </Head>
-      <Navbar themeFunc={setTheme} mounted={mounted} resolvedTheme={resolvedTheme} />
+      <Navbar
+        themeFunc={setTheme}
+        mounted={mounted}
+        resolvedTheme={resolvedTheme}
+      />
 
-      <main className="bg-white dark:bg-black px-4">
-        {children}
-      </main>
-      <footer>
-      </footer>
+      <main className="bg-white dark:bg-black px-4">{children}</main>
+      <footer></footer>
     </div>
   );
 }

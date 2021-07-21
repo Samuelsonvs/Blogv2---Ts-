@@ -2,19 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  @font-face {
+    font-family: "Roboto Slab";
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: optional;
+    src: url("/font/RobotoSlab-VariableFont_wght.woff2") format("woff2");
+  }
+}
+/* Roboto Slab */
 html,
 body {
+  scroll-behavior: smooth;
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+* {
+  box-sizing: border-box;
+}
+
+#__next {
+  min-height: 100vh;
 }
 
 a {
   color: inherit;
   text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
 }

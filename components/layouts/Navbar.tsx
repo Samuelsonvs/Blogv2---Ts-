@@ -42,7 +42,7 @@ export default function Navbar({
               ))}
           </button>
           <Link href="/">
-            <a className="text-xl lg:text-2xl text-transparent hover:underline bg-clip-text bg-gradient-to-r from-green-300 via-blue-500 to-purple-600">
+            <a className="text-xl lg:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-green-300 via-blue-500 to-purple-600">
               Mert Samet
             </a>
           </Link>

@@ -1,5 +1,8 @@
-export interface ContainerProps {
+export interface Children {
   children: JSX.Element;
+}
+
+export interface ContainerProps extends Children {
   customMeta?: [string];
 }
 
@@ -9,7 +12,6 @@ export interface ThemeController {
   resolvedTheme: string | undefined;
 }
 
-export interface SvgInfo {
+export interface SvgInfo extends Children {
   ariaLabel: string;
-  children: JSX.Element;
 }

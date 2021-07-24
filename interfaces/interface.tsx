@@ -82,3 +82,17 @@ export interface Notion {
     ];
   };
 }
+
+export interface ArticleDevTo {
+  articles: [
+    {
+      article: {
+        canonical_url: string;
+        comments_count: number;
+        created_at: string;
+        description: string;
+        title: string;
+      };
+    }
+  ];
+}

@@ -2,10 +2,16 @@ import React, { Fragment } from "react";
 import Image from "next/image";
 import { GetStaticProps, GetStaticPropsContext } from "next";
 
-import { Notion } from "@/interfaces/interface";
+import { Notion, tagColor } from "@/interfaces/interface";
 import { getPages, getDatabase } from "@/lib/notion";
 import Container from "@/container/Container";
 import NotionPageSvg from "@/public/svg/notionpage.svg";
+
+const tagColorObject: tagColor = {
+  framework: "indigo",
+  blog: "green",
+  library: "yellow",
+};
 
 export default function notionpage({
   response_page,
@@ -60,10 +66,11 @@ export default function notionpage({
                         </td>
                         <td className="sm:px-6 py-3 px-3">
                           {result.properties.Tags.multi_select.map((select) => {
+                            const selectedColor = tagColorObject[select.name];
                             return (
                               <span
                                 key={select.name}
-                                className="bg-green-200 text-green-600 py-1 px-3 mr-1 rounded-full text-xs"
+                                className={`bg-${selectedColor}-200 text-${selectedColor}-600 py-1 px-3 mr-1 rounded-full text-xs`}
                               >
                                 {select.name}
                               </span>

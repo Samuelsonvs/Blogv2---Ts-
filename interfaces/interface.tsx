@@ -83,16 +83,35 @@ export interface Notion {
   };
 }
 
+export interface tagColor {
+  [key: string]: string | number;
+  framework: string;
+  blog: string;
+  library: string;
+}
+
 export interface ArticleDevTo {
   articles: [
     {
       article: {
-        canonical_url: string;
+        url: string;
         comments_count: number;
+        tags: string;
+        positive_reactions_count: number;
         created_at: string;
         description: string;
         title: string;
       };
     }
   ];
+}
+
+export interface tagName {
+  [key: string]: string | number;
+  javascript: string;
+  typescript: string;
+  webdev: string;
+  tutorial: string;
+  html: string;
+  css: string;
 }

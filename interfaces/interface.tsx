@@ -1,3 +1,4 @@
+import React, { Dispatch, SetStateAction } from "react";
 export interface Children {
   children: JSX.Element;
 }
@@ -114,4 +115,15 @@ export interface tagName {
   tutorial: string;
   html: string;
   css: string;
+}
+
+export interface PageInfos {
+  pageInfo: {
+    pageNow: number;
+    pageFirstNum: number;
+    pageLastNum: number;
+  };
+  setPageInfo: Dispatch<SetStateAction<any>>;
+  totalPage: number;
+  perPage: number;
 }

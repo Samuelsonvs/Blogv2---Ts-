@@ -8,6 +8,9 @@ module.exports = {
       fontFamily: {
         sans: ["Roboto Slab", ...fontFamily.sans],
       },
+      minHeight: {
+        75: "75vh",
+      },
     },
   },
   variants: {

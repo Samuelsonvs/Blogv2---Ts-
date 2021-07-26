@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Transition } from "@headlessui/react";
 
 import { ThemeController } from "@/interfaces/interface";
-import SvgCreator from "@/container/SvgCreator";
+import SvgCreator from "@/components/SvgCreator";
 
 const navList = [
   { name: "Home", route: "/" },

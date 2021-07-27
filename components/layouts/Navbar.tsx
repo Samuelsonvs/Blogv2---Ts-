@@ -7,7 +7,7 @@ import SvgCreator from "@/components/SvgCreator";
 
 const navList = [
   { name: "Home", route: "/" },
-  { name: "Blog", route: "/blog" },
+  { name: "Blog", route: "/blog/item?page=1" },
   { name: "Projects", route: "/projects" },
 ];
 

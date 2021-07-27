@@ -1,4 +1,4 @@
-import React, { createElement } from "react";
+import React, { createElement, useEffect } from "react";
 import Image from "next/image";
 
 import { PageInfos } from "@/interfaces/interface";
@@ -15,22 +15,30 @@ export default function Pagination({
     const pageNum = parseInt(e.target.innerText);
     setPageInfo({
       pageNow: pageNum,
-      pageFirstNum: pageNum === 1 ? 0 : 0 + (pageNum - 1) * perPage,
-      pageLastNum: pageNum * perPage,
+      articlesFirstNum: pageNum === 1 ? 0 : 0 + (pageNum - 1) * perPage,
+      articlesLastNum: pageNum * perPage,
     });
   };
 
-  const prevHandler = () => {
-    console.log("prev");
-  };
-
-  const nextHandler = () => {
-    console.log("next");
+  const rightLeftHandler = (param: string) => {
+    const newPage =
+      param === "prev" && pageInfo.pageNow > 1
+        ? pageInfo.pageNow - 1
+        : param === "next" && totalPage > pageInfo.pageNow
+        ? pageInfo.pageNow + 1
+        : null;
+    if (newPage) {
+      setPageInfo({
+        pageNow: newPage,
+        articlesFirstNum: (newPage - 1) * perPage,
+        articlesLastNum: newPage * perPage,
+      });
+    }
   };
 
   return (
     <>
-      <button onClick={prevHandler} className="mr-4">
+      <button onClick={() => rightLeftHandler("prev")} className="mr-4">
         <Image
           layout="fixed"
           src={PaginationLeft}
@@ -51,7 +59,8 @@ export default function Pagination({
           },
         });
       })}
-      <button onClick={nextHandler} className="ml-3">
+
+      <button onClick={() => rightLeftHandler("next")} className="ml-3">
         <Image
           layout="fixed"
           src={PaginationRight}

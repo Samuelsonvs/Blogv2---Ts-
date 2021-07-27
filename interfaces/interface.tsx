@@ -120,8 +120,8 @@ export interface tagName {
 export interface PageInfos {
   pageInfo: {
     pageNow: number;
-    pageFirstNum: number;
-    pageLastNum: number;
+    articlesFirstNum: number;
+    articlesLastNum: number;
   };
   setPageInfo: Dispatch<SetStateAction<any>>;
   totalPage: number;

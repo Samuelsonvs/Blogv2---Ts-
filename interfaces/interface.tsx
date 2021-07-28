@@ -117,13 +117,43 @@ export interface ArticleDevTo {
 }
 
 export interface tagName {
-  [key: string]: string;
-  javascript: string;
-  typescript: string;
-  webdev: string;
-  tutorial: string;
-  html: string;
-  css: string;
+  [key: string]: any;
+  default:  {
+    bg: string,
+    text:string
+  };
+  javascript:  {
+    bg: string,
+    text:string
+  };
+  typescript:  {
+    bg: string,
+    text:string
+  };
+  webdev:  {
+    bg: string,
+    text:string
+  };
+  tutorial:  {
+    bg: string,
+    text:string
+  };
+  html:  {
+    bg: string,
+    text:string
+  };
+  css:  {
+    bg: string,
+    text:string
+  };
+  react: {
+    bg: string,
+    text:string
+  };
+  nextjs: {
+    bg: string,
+    text:string
+  }
 }
 
 export interface PageInfos {

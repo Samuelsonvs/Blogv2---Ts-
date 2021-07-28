@@ -23,29 +23,21 @@ const tagColors: tagName = {
 
 export default function Blog({ articles }: ArticleDevTo): JSX.Element {
   const router = useRouter();
-  const pageInitialInfo = {
-    startPage: 0,
-    perPage: 3,
-  };
+  const perPage = 3;
 
   const articleLength = articles.length;
-  const totalPage = Math.ceil(articleLength / pageInitialInfo.perPage);
+  const totalPage = Math.ceil(articleLength / perPage);
 
-  const routerNum = router.query.page as unknown as number;
+  const routerNum: number = Number(router.query.page);
   const filteredRouterNum =
-    routerNum <= totalPage && 0 < routerNum ? routerNum : null; // for type convert
+    routerNum <= totalPage && 0 < routerNum ? routerNum : 1;
 
   const [pageInfo, setPageInfo] = useState({
-    pageNow: filteredRouterNum ? filteredRouterNum : 1,
-    articlesFirstNum: filteredRouterNum
-      ? (filteredRouterNum - 1) * pageInitialInfo.perPage
-      : pageInitialInfo.startPage,
-    articlesLastNum: filteredRouterNum
-      ? filteredRouterNum * pageInitialInfo.perPage
-      : pageInitialInfo.perPage,
+    pageNow: filteredRouterNum,
+    articlesFirstNum: (filteredRouterNum - 1) * perPage,
+    articlesLastNum: filteredRouterNum * perPage,
   });
 
-  console.log(pageInfo.pageNow);
   useEffect(() => {
     router.push(`item?page=${pageInfo.pageNow}`);
   }, [pageInfo.pageNow]);
@@ -53,6 +45,20 @@ export default function Blog({ articles }: ArticleDevTo): JSX.Element {
   return (
     <Container>
       <section>
+        <div>
+          <h2 className="text-3xl sm:text-4xl">
+            <span>My&nbsp;</span>
+            <a
+              href="https://dev.to"
+              target="_blank"
+              rel="noreferrer"
+              className="underline"
+            >
+              Dev.to
+            </a>
+            <span>&nbsp;reading list</span>
+          </h2>
+        </div>
         <div className="min-h-75">
           {articles
             .slice(pageInfo.articlesFirstNum, pageInfo.articlesLastNum)
@@ -132,12 +138,13 @@ export default function Blog({ articles }: ArticleDevTo): JSX.Element {
               );
             })}
         </div>
-        <div className="flex justify-center">
+        <div className="flex justify-center mt-6 md:mt-3">
           <Pagination
             pageInfo={pageInfo}
             setPageInfo={setPageInfo}
             totalPage={totalPage}
-            perPage={pageInitialInfo.perPage}
+            perPage={perPage}
+            filteredRouterNum={filteredRouterNum}
           />
         </div>
       </section>

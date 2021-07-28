@@ -1,4 +1,4 @@
-import React, { createElement, useEffect } from "react";
+import React, { createElement } from "react";
 import Image from "next/image";
 
 import { PageInfos } from "@/interfaces/interface";
@@ -10,8 +10,10 @@ export default function Pagination({
   setPageInfo,
   totalPage,
   perPage,
+  filteredRouterNum,
 }: PageInfos): JSX.Element {
   const handleClick = (e: any): any => {
+    e.preventDefault();
     const pageNum = parseInt(e.target.innerText);
     setPageInfo({
       pageNow: pageNum,
@@ -47,19 +49,37 @@ export default function Pagination({
           height={22}
         />
       </button>
-      {[...Array(totalPage).keys()].map((_, idx) => {
-        return createElement("button", {
-          key: `${idx}`,
-          children: `${idx + 1}`,
-          className: `p-3 border mr-1 ${
-            idx + 1 === pageInfo.pageNow ? "text-red-500" : "text-gray-500"
-          }`,
-          onClick: (e: React.MouseEventHandler<HTMLButtonElement>) => {
-            handleClick(e);
-          },
-        });
+      {Array.from({ length: totalPage }, (_, i) => i + 1).map((num, idx) => {
+        if (totalPage < 4) {
+          return createElement("button", {
+            key: `${idx}`,
+            children: `${num}`,
+            className: `p-3 border mr-1 ${
+              num === pageInfo.pageNow ? "text-red-500" : "text-gray-500"
+            }`,
+            onClick: (e: React.MouseEventHandler<HTMLButtonElement>) => {
+              handleClick(e);
+            },
+          });
+        } else {
+          return createElement("button", {
+            key: `${idx}`,
+            children: `${num}`,
+            className: `p-3 border mr-1 ${
+              num === pageInfo.pageNow ? "text-red-500" : "text-gray-500"
+            } ${
+              num + 1 === filteredRouterNum ||
+              filteredRouterNum === num ||
+              totalPage === num
+                ? "block"
+                : "hidden"
+            }`,
+            onClick: (e: React.MouseEventHandler<HTMLButtonElement>) => {
+              handleClick(e);
+            },
+          });
+        }
       })}
-
       <button onClick={() => rightLeftHandler("next")} className="ml-3">
         <Image
           layout="fixed"

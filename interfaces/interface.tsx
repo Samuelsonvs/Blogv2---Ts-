@@ -126,4 +126,5 @@ export interface PageInfos {
   setPageInfo: Dispatch<SetStateAction<any>>;
   totalPage: number;
   perPage: number;
+  filteredRouterNum: number;
 }

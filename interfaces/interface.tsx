@@ -86,9 +86,18 @@ export interface Notion {
 
 export interface tagColor {
   [key: string]: any;
-  framework: string;
-  blog: string;
-  library: string;
+  framework: {
+    bg: string,
+    text:string
+  };
+  blog: {
+    bg: string,
+    text:string
+  };
+  library: {
+    bg: string,
+    text:string
+  };
 }
 
 export interface ArticleDevTo {

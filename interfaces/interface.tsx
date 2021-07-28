@@ -85,7 +85,7 @@ export interface Notion {
 }
 
 export interface tagColor {
-  [key: string]: string | number;
+  [key: string]: any;
   framework: string;
   blog: string;
   library: string;
@@ -108,7 +108,7 @@ export interface ArticleDevTo {
 }
 
 export interface tagName {
-  [key: string]: string | number;
+  [key: string]: string;
   javascript: string;
   typescript: string;
   webdev: string;

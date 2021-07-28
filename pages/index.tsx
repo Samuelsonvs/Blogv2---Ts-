@@ -66,7 +66,7 @@ export default function notionpage({
                         </td>
                         <td className="sm:px-6 py-3 px-3">
                           {result.properties.Tags.multi_select.map((select) => {
-                            const selectedColor = tagColorObject[select.name];
+                            const selectedColor: string = String(tagColorObject[select.name]);
                             return (
                               <span
                                 key={select.name}

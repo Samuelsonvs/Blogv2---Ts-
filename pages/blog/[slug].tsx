@@ -68,10 +68,6 @@ export default function Blog({ articles }: ArticleDevTo): JSX.Element {
     articlesLastNum: filteredRouterNum * perPage,
   });
 
-  useEffect(() => {
-    router.push(`item?page=${pageInfo.pageNow}`);
-  }, [pageInfo.pageNow]);
-
   return (
     <Container>
       <section>

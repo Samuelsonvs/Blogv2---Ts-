@@ -1,11 +1,13 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import Image from "next/image";
-import { GetStaticProps, GetStaticPropsContext } from "next";
+import { GetServerSideProps, GetServerSidePropsContext } from "next";
+import prisma from "@/lib/prisma";
 
-import { Notion, tagColor } from "@/interfaces/interface";
+import { NotionPrisma, tagColor } from "@/interfaces/interface";
 import { getPages, getDatabase } from "@/lib/notion";
 import Container from "@/container/Container";
 import NotionPageSvg from "@/public/svg/notionpage.svg";
+import Newsletter from "@/components/Newsletter";
 
 const tagColorObject: tagColor = {
   framework: {
@@ -22,10 +24,13 @@ const tagColorObject: tagColor = {
   },
 };
 
-export default function notionpage({
+export default function Notionpage({
   response_page,
   response_db,
-}: Notion): JSX.Element {
+  initialContacts,
+}: NotionPrisma): JSX.Element {
+  const [contacts, useContacts] = useState(initialContacts);
+  console.log(contacts);
   return (
     <Container>
       <div>
@@ -95,22 +100,23 @@ export default function notionpage({
             </table>
           </div>
         </div>
+        <Newsletter />
       </div>
     </Container>
   );
 }
 
-export const getStaticProps: GetStaticProps = async (
-  context: GetStaticPropsContext
+export const getServerSideProps: GetServerSideProps = async (
+  context: GetServerSidePropsContext
 ) => {
+  const contacts = await prisma.contact.findMany();
   const response_page = await getPages();
   const response_db = await getDatabase();
-
   return {
     props: {
       response_page,
       response_db,
+      initialContacts: contacts,
     },
-    revalidate: 1,
   };
 };

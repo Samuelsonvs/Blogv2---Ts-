@@ -50,7 +50,7 @@ export default function Navbar({
         <div className="hidden sm:block">
           <ul className="flex">
             {navList.map((item) => (
-              <li key={item.name}>
+              <li className="button-active-effect" key={item.name}>
                 <Link href={item.route} passHref scroll={false}>
                   <a className="hover:bg-gray-100 focus:bg-gray-100 dark:hover:bg-gray-900 dark:focus:bg-gray-900 px-3 py-2 rounded-md text-sm lg:text-base font-medium">
                     {item.name}

@@ -1,4 +1,4 @@
-import React, { createElement, useEffect, useState } from "react";
+import React, { useState } from "react";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import { format } from "date-fns";
 import Image from "next/image";

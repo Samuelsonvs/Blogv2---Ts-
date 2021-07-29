@@ -44,7 +44,10 @@ export default function Pagination({
 
   return (
     <>
-      <button onClick={() => rightLeftHandler("prev")} className="mr-4 focus:outline-none">
+      <button
+        onClick={() => rightLeftHandler("prev")}
+        className="mr-4 focus:outline-none"
+      >
         <Image
           layout="fixed"
           src={PaginationLeft}
@@ -79,7 +82,9 @@ export default function Pagination({
               children: `${num}`,
               disabled: pageInfo.pageNow === num ? true : false,
               className: `p-3 border mr-1 focus:outline-none ${
-                num === pageInfo.pageNow ? "text-red-500 cursor-text" : "text-gray-500 cursor-pointer"
+                num === pageInfo.pageNow
+                  ? "text-red-500 cursor-text"
+                  : "text-gray-500 cursor-pointer"
               }`,
               onClick: (e: React.MouseEventHandler<HTMLButtonElement>) => {
                 handleClick(e);
@@ -102,7 +107,9 @@ export default function Pagination({
                 children: `${num}`,
                 disabled: pageInfo.pageNow === num ? true : false,
                 className: `p-3 border mr-1 focus:outline-none ${
-                  num === pageInfo.pageNow ? "text-red-500 cursor-text" : "text-gray-500 cursor-pointer"
+                  num === pageInfo.pageNow
+                    ? "text-red-500 cursor-text"
+                    : "text-gray-500 cursor-pointer"
                 } ${
                   num + 1 === pageInfo.pageNow ||
                   pageInfo.pageNow === num ||
@@ -122,13 +129,18 @@ export default function Pagination({
         children: `${totalPage}`,
         disabled: pageInfo.pageNow === totalPage ? true : false,
         className: `p-3 border mr-1 focus:outline-none ${
-          totalPage === pageInfo.pageNow ? "text-red-500 cursor-text" : "text-gray-500 cursor-pointer"
+          totalPage === pageInfo.pageNow
+            ? "text-red-500 cursor-text"
+            : "text-gray-500 cursor-pointer"
         }`,
         onClick: (e: React.MouseEventHandler<HTMLButtonElement>) => {
           handleClick(e);
         },
       })}
-      <button onClick={() => rightLeftHandler("next")} className="ml-3 focus:outline-none">
+      <button
+        onClick={() => rightLeftHandler("next")}
+        className="ml-3 focus:outline-none"
+      >
         <Image
           layout="fixed"
           src={PaginationRight}

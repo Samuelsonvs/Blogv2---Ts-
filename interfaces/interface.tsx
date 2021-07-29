@@ -17,7 +17,7 @@ export interface ThemeController {
   resolvedTheme: string | undefined;
 }
 
-export interface Notion {
+export interface NotionPrisma {
   response_db: {
     results: [
       {
@@ -82,6 +82,7 @@ export interface Notion {
       }
     ];
   };
+  initialContacts: any;
 }
 
 export interface tagColor {

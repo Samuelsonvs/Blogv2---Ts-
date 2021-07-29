@@ -168,13 +168,15 @@ export default function Blog({ articles }: ArticleDevTo): JSX.Element {
             })}
         </div>
         <div className="flex justify-center mt-6 md:mt-3">
-          <Pagination
-            pageInfo={pageInfo}
-            setPageInfo={setPageInfo}
-            totalPage={totalPage}
-            perPage={perPage}
-            filteredRouterNum={filteredRouterNum}
-          />
+          {totalPage > 1 && (
+            <Pagination
+              pageInfo={pageInfo}
+              setPageInfo={setPageInfo}
+              totalPage={totalPage}
+              perPage={perPage}
+              filteredRouterNum={filteredRouterNum}
+            />
+          )}
         </div>
       </section>
     </Container>

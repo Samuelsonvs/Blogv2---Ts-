@@ -44,7 +44,7 @@ export default function Pagination({
 
   return (
     <>
-      <button onClick={() => rightLeftHandler("prev")} className="mr-4">
+      <button onClick={() => rightLeftHandler("prev")} className="mr-4 focus:outline-none">
         <Image
           layout="fixed"
           src={PaginationLeft}
@@ -57,7 +57,7 @@ export default function Pagination({
         totalPage > 4 &&
         createElement("button", {
           children: "1",
-          className: `p-3 border mr-1 ${
+          className: `p-3 border mr-1 focus:outline-none ${
             1 === pageInfo.pageNow ? "text-red-500" : "text-gray-500"
           }`,
           onClick: (e: React.MouseEventHandler<HTMLButtonElement>) => {
@@ -69,7 +69,7 @@ export default function Pagination({
         createElement("button", {
           children: "...",
           disabled: true,
-          className: "p-3 border mr-1",
+          className: "p-3 border mr-1 focus:outline-none",
         })}
       {Array.from({ length: totalPage - 1 }, (_, i) => i + 1).map(
         (num, idx) => {
@@ -77,8 +77,9 @@ export default function Pagination({
             return createElement("button", {
               key: `${idx}`,
               children: `${num}`,
-              className: `p-3 border mr-1 ${
-                num === pageInfo.pageNow ? "text-red-500" : "text-gray-500"
+              disabled: pageInfo.pageNow === num ? true : false,
+              className: `p-3 border mr-1 focus:outline-none ${
+                num === pageInfo.pageNow ? "text-red-500 cursor-text" : "text-gray-500 cursor-pointer"
               }`,
               onClick: (e: React.MouseEventHandler<HTMLButtonElement>) => {
                 handleClick(e);
@@ -93,14 +94,15 @@ export default function Pagination({
                 key: `${idx}`,
                 children: "...",
                 disabled: true,
-                className: "p-3 border mr-1",
+                className: "p-3 border mr-1 focus:outline-none",
               });
             } else {
               return createElement("button", {
                 key: `${idx}`,
                 children: `${num}`,
-                className: `p-3 border mr-1 ${
-                  num === pageInfo.pageNow ? "text-red-500" : "text-gray-500"
+                disabled: pageInfo.pageNow === num ? true : false,
+                className: `p-3 border mr-1 focus:outline-none ${
+                  num === pageInfo.pageNow ? "text-red-500 cursor-text" : "text-gray-500 cursor-pointer"
                 } ${
                   num + 1 === pageInfo.pageNow ||
                   pageInfo.pageNow === num ||
@@ -118,14 +120,15 @@ export default function Pagination({
       )}
       {createElement("button", {
         children: `${totalPage}`,
-        className: `p-3 border mr-1 ${
-          totalPage === pageInfo.pageNow ? "text-red-500" : "text-gray-500"
+        disabled: pageInfo.pageNow === totalPage ? true : false,
+        className: `p-3 border mr-1 focus:outline-none ${
+          totalPage === pageInfo.pageNow ? "text-red-500 cursor-text" : "text-gray-500 cursor-pointer"
         }`,
         onClick: (e: React.MouseEventHandler<HTMLButtonElement>) => {
           handleClick(e);
         },
       })}
-      <button onClick={() => rightLeftHandler("next")} className="ml-3">
+      <button onClick={() => rightLeftHandler("next")} className="ml-3 focus:outline-none">
         <Image
           layout="fixed"
           src={PaginationRight}

@@ -15,39 +15,39 @@ import Pagination from "@/components/Pagination";
 const tagColors: tagName = {
   default: {
     bg: "bg-yellow-200",
-    text: "text-yellow-600"
+    text: "text-yellow-600",
   },
-  javascript:  {
+  javascript: {
     bg: "bg-red-200",
-    text: "text-red-600"
+    text: "text-red-600",
   },
-  typescript:  {
+  typescript: {
     bg: "bg-indigo-200",
-    text: "text-indigo-600"
+    text: "text-indigo-600",
   },
-  webdev:  {
+  webdev: {
     bg: "bg-yellow-200",
-    text: "text-yellow-600"
+    text: "text-yellow-600",
   },
-  tutorial:  {
+  tutorial: {
     bg: "bg-purple-200",
-    text: "text-purple-600"
+    text: "text-purple-600",
   },
-  html:  {
+  html: {
     bg: "bg-gray-200",
-    text: "text-gray-600"
+    text: "text-gray-600",
   },
-  css:  {
+  css: {
     bg: "bg-green-200",
-    text: "text-green-600"
+    text: "text-green-600",
   },
   react: {
     bg: "bg-blue-200",
-    text: "text-blue-600"
+    text: "text-blue-600",
   },
-  nextjs:  {
+  nextjs: {
     bg: "bg-green-200",
-    text: "text-green-600"
+    text: "text-green-600",
   },
 };
 
@@ -150,8 +150,13 @@ export default function Blog({ articles }: ArticleDevTo): JSX.Element {
                       return (
                         <span
                           key={tag}
-                          className={`py-1 px-2 mr-1 mt-1 rounded-full ${tagColors[trimTag]?.bg || tagColors["default"].bg} 
-                          ${tagColors[trimTag]?.text || tagColors["default"].text}`}
+                          className={`py-1 px-2 mr-1 mt-1 rounded-full ${
+                            tagColors[trimTag]?.bg || tagColors["default"].bg
+                          } 
+                          ${
+                            tagColors[trimTag]?.text ||
+                            tagColors["default"].text
+                          }`}
                         >
                           {tag}
                         </span>

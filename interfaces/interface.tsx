@@ -87,16 +87,16 @@ export interface Notion {
 export interface tagColor {
   [key: string]: any;
   framework: {
-    bg: string,
-    text:string
+    bg: string;
+    text: string;
   };
   blog: {
-    bg: string,
-    text:string
+    bg: string;
+    text: string;
   };
   library: {
-    bg: string,
-    text:string
+    bg: string;
+    text: string;
   };
 }
 
@@ -118,42 +118,42 @@ export interface ArticleDevTo {
 
 export interface tagName {
   [key: string]: any;
-  default:  {
-    bg: string,
-    text:string
+  default: {
+    bg: string;
+    text: string;
   };
-  javascript:  {
-    bg: string,
-    text:string
+  javascript: {
+    bg: string;
+    text: string;
   };
-  typescript:  {
-    bg: string,
-    text:string
+  typescript: {
+    bg: string;
+    text: string;
   };
-  webdev:  {
-    bg: string,
-    text:string
+  webdev: {
+    bg: string;
+    text: string;
   };
-  tutorial:  {
-    bg: string,
-    text:string
+  tutorial: {
+    bg: string;
+    text: string;
   };
-  html:  {
-    bg: string,
-    text:string
+  html: {
+    bg: string;
+    text: string;
   };
-  css:  {
-    bg: string,
-    text:string
+  css: {
+    bg: string;
+    text: string;
   };
   react: {
-    bg: string,
-    text:string
+    bg: string;
+    text: string;
   };
   nextjs: {
-    bg: string,
-    text:string
-  }
+    bg: string;
+    text: string;
+  };
 }
 
 export interface PageInfos {

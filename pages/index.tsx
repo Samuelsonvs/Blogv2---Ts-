@@ -10,15 +10,15 @@ import NotionPageSvg from "@/public/svg/notionpage.svg";
 const tagColorObject: tagColor = {
   framework: {
     bg: "bg-indigo-200",
-    text: "text-indigo-600"
+    text: "text-indigo-600",
   },
   blog: {
     bg: "bg-green-200",
-    text: "text-green-600"
+    text: "text-green-600",
   },
-  library:  {
+  library: {
     bg: "bg-yellow-200",
-    text: "text-yellow-600"
+    text: "text-yellow-600",
   },
 };
 
@@ -78,7 +78,9 @@ export default function notionpage({
                             return (
                               <span
                                 key={select.name}
-                                className={`${tagColorObject[select.name].bg} ${tagColorObject[select.name].text} py-1 px-3 mr-1 rounded-full text-xs`}
+                                className={`${tagColorObject[select.name].bg} ${
+                                  tagColorObject[select.name].text
+                                } py-1 px-3 mr-1 rounded-full text-xs`}
                               >
                                 {select.name}
                               </span>

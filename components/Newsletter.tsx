@@ -1,23 +1,46 @@
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Image from "next/image";
+import { Prisma } from "@prisma/client";
 
 import Mail from "@/public/svg/mail.svg";
-
-interface Inputs {
-  email: string;
-  example: string;
-  exampleRequired: string;
+import { EmailInput } from "@/interfaces/interface";
+export interface contactInfo {
+  contacts: any;
+  setContacts: Dispatch<SetStateAction<any>>;
 }
 
-export default function Newsletter(): JSX.Element {
+export default function Newsletter({
+  contacts,
+  setContacts,
+}: contactInfo): JSX.Element {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+    reset,
+    formState: { isSubmitSuccessful },
+  } = useForm<EmailInput>();
+  const [inData, setInData] = useState<string>("");
+  const onSubmit: SubmitHandler<EmailInput> = async (data) => {
+    try {
+      const savedData = await saveContact(data);
+      if (savedData === 1) {
+        setInData("Email already has been registered.");
+      } else {
+        setContacts([...contacts, savedData]);
+        setInData("");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      reset({ email: "" });
+    }
+  }, [isSubmitSuccessful, reset]);
   return (
     <div className="overflow-hidden mt-20 relative py-10 px-6 sm:px-12 bg-indigo-600 dark:bg-indigo-800 rounded-2xl border border-gray-700 dark:border-gray-400 shadow-xl">
       <div
@@ -67,6 +90,7 @@ export default function Newsletter(): JSX.Element {
           {errors.email && (
             <div className="text-red-300 mt-2">Email is required</div>
           )}
+          {inData && <div className="text-red-300 mt-2">{inData}</div>}
         </form>
       </div>
       <div className="mt-10 text-gray-100 flex">
@@ -83,4 +107,17 @@ export default function Newsletter(): JSX.Element {
       </div>
     </div>
   );
+}
+
+async function saveContact(email: Prisma.ContactCreateInput) {
+  const response = await fetch("/api/contacts", {
+    method: "POST",
+    body: JSON.stringify(email),
+  });
+
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+
+  return await response.json();
 }

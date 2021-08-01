@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction } from "react";
 export interface Children {
   children: JSX.Element;
 }
@@ -167,4 +167,8 @@ export interface PageInfos {
   totalPage: number;
   perPage: number;
   filteredRouterNum: number;
+}
+
+export interface EmailInput {
+  email: string;
 }

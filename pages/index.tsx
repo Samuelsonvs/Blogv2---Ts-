@@ -1,7 +1,8 @@
 import React, { Fragment, useState } from "react";
 import Image from "next/image";
-import { GetServerSideProps, GetServerSidePropsContext } from "next";
+import { GetStaticProps, GetStaticPropsContext } from "next";
 import prisma from "@/lib/prisma";
+import { Contact } from "@prisma/client";
 
 import { NotionPrisma, tagColor } from "@/interfaces/interface";
 import { getPages, getDatabase } from "@/lib/notion";
@@ -29,7 +30,7 @@ export default function Notionpage({
   response_db,
   initialContacts,
 }: NotionPrisma): JSX.Element {
-  const [contacts, useContacts] = useState(initialContacts);
+  const [contacts, setContacts] = useState<Contact[]>(initialContacts);
   console.log(contacts);
   return (
     <Container>
@@ -100,16 +101,16 @@ export default function Notionpage({
             </table>
           </div>
         </div>
-        <Newsletter />
+        <Newsletter setContacts={setContacts} contacts={contacts} />
       </div>
     </Container>
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async (
-  context: GetServerSidePropsContext
+export const getStaticProps: GetStaticProps = async (
+  context: GetStaticPropsContext
 ) => {
-  const contacts = await prisma.contact.findMany();
+  const contacts: Contact[] = await prisma.contact.findMany();
   const response_page = await getPages();
   const response_db = await getDatabase();
   return {
@@ -118,5 +119,6 @@ export const getServerSideProps: GetServerSideProps = async (
       response_db,
       initialContacts: contacts,
     },
+    revalidate: 60,
   };
 };

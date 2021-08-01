@@ -6,7 +6,7 @@ declare global {
       prisma: any;
     }
   }
-}
+};
 
 let prisma: PrismaClient;
 

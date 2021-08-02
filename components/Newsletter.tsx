@@ -1,18 +1,14 @@
-import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Image from "next/image";
 import { Prisma } from "@prisma/client";
 
 import Mail from "@/public/svg/mail.svg";
-import { EmailInput } from "@/interfaces/interface";
-export interface contactInfo {
-  contacts: any;
-  setContacts: Dispatch<SetStateAction<any>>;
-}
+import { EmailInput, contactInfo } from "@/interfaces/interface";
 
 export default function Newsletter({
-  contacts,
-  setContacts,
+  totalEmail,
+  setTotalEmail,
 }: contactInfo): JSX.Element {
   const {
     register,
@@ -28,8 +24,8 @@ export default function Newsletter({
       if (savedData === 1) {
         setInData("Email already has been registered.");
       } else {
-        setContacts([...contacts, savedData]);
         setInData("");
+        setTotalEmail(totalEmail + 1);
       }
     } catch (err) {
       console.log(err);
@@ -103,7 +99,7 @@ export default function Newsletter({
             height={22}
           />
         </span>
-        <div className="ml-2 relative z-10">Sub count</div>
+        <div className="ml-2 relative z-10">Sub count {totalEmail}</div>
       </div>
     </div>
   );

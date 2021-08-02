@@ -18,8 +18,12 @@ export default function Navbar({
 }: ThemeController): JSX.Element {
   const [isShowing, setIsShowing] = useState(false);
   return (
-    <header className="sticky">
-      <nav className="bg-white dark:bg-black flex justify-between py-10">
+    <header className="sticky top-0 z-20 bg-opacity-50 transition ease-in backdrop-filter backdrop-blur-lg backdrop-saturate-150">
+      <nav
+        className={`bg-white dark:bg-black ${
+          !isShowing ? "dark:bg-opacity-50 bg-opacity-50" : ""
+        } flex justify-between py-10`}
+      >
         <div className="flex">
           <button
             className="px-2"

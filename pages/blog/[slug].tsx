@@ -69,7 +69,7 @@ export default function Blog({ articles }: ArticleDevTo): JSX.Element {
   });
 
   return (
-    <Container>
+    <Container customTitle={"Dev.to – Mert Samet Atalı"}>
       <section>
         <div>
           <h2 className="text-3xl sm:text-4xl">
@@ -77,7 +77,7 @@ export default function Blog({ articles }: ArticleDevTo): JSX.Element {
             <a
               href="https://dev.to"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="underline"
             >
               Dev.to

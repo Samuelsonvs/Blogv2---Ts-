@@ -4,7 +4,7 @@ export interface Children {
 }
 
 export interface ContainerProps extends Children {
-  customMeta?: [string];
+  customTitle?: string;
 }
 
 export interface SvgInfo extends Children {
@@ -83,6 +83,11 @@ export interface NotionPrisma {
     ];
   };
   initialContacts: any;
+  totalCount: {
+    _count: {
+      email: number;
+    };
+  };
 }
 
 export interface tagColor {
@@ -171,4 +176,9 @@ export interface PageInfos {
 
 export interface EmailInput {
   email: string;
+}
+
+export interface contactInfo {
+  totalEmail: number;
+  setTotalEmail: Dispatch<SetStateAction<any>>;
 }

@@ -2,7 +2,6 @@ import React, { Fragment, useState } from "react";
 import Image from "next/image";
 import { GetStaticProps, GetStaticPropsContext } from "next";
 import prisma from "@/lib/prisma";
-import { Contact } from "@prisma/client";
 
 import { NotionPrisma, tagColor } from "@/interfaces/interface";
 import { getPages, getDatabase } from "@/lib/notion";
@@ -28,10 +27,9 @@ const tagColorObject: tagColor = {
 export default function Notionpage({
   response_page,
   response_db,
-  initialContacts,
+  totalCount,
 }: NotionPrisma): JSX.Element {
-  const [contacts, setContacts] = useState<Contact[]>(initialContacts);
-  console.log(contacts);
+  const [totalEmail, setTotalEmail] = useState(totalCount._count.email);
   return (
     <Container>
       <div>
@@ -60,7 +58,7 @@ export default function Notionpage({
           </div>
         </div>
         <div>
-          <h2 className="text-3xl">Example Database</h2>
+          <h2 className="text-3xl">Database example from Notion</h2>
           <div className="w-full shadow-md rounded my-6">
             <table className="w-full">
               <thead>
@@ -101,7 +99,7 @@ export default function Notionpage({
             </table>
           </div>
         </div>
-        <Newsletter setContacts={setContacts} contacts={contacts} />
+        <Newsletter totalEmail={totalEmail} setTotalEmail={setTotalEmail} />
       </div>
     </Container>
   );
@@ -110,14 +108,18 @@ export default function Notionpage({
 export const getStaticProps: GetStaticProps = async (
   context: GetStaticPropsContext
 ) => {
-  const contacts: Contact[] = await prisma.contact.findMany();
+  const totalCount = await prisma.contact.aggregate({
+    _count: {
+      email: true,
+    },
+  });
   const response_page = await getPages();
   const response_db = await getDatabase();
   return {
     props: {
       response_page,
       response_db,
-      initialContacts: contacts,
+      totalCount,
     },
     revalidate: 60,
   };

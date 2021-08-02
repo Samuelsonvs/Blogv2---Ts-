@@ -4,10 +4,11 @@ import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import Navbar from "@/components/layouts/Navbar";
 import { ContainerProps } from "@/interfaces/interface";
+import Footer from "@/components/layouts/Footer";
 
 export default function Container({
   children,
-  ...customMeta
+  customTitle,
 }: ContainerProps): JSX.Element {
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
@@ -17,16 +18,15 @@ export default function Container({
 
   const router = useRouter();
   const meta = {
-    title: "Mert Samet Atalı – Developer, creator.",
+    title: customTitle ? customTitle : "Mert Samet Atalı – Developer, creator.",
     description: `Front-end developer, JavaScript enthusiast.`,
     image: "",
     type: "website",
-    ...customMeta,
     date: "02.02.02",
   };
 
   return (
-    <div className="bg-white dark:bg-black">
+    <div className="bg-white dark:bg-black max-w-3xl px-3 mx-auto dark:text-gray-300">
       <Head>
         <title>{meta.title}</title>
         <meta name="robots" content="follow, index" />
@@ -55,7 +55,9 @@ export default function Container({
       />
 
       <main className="bg-white dark:bg-black px-4">{children}</main>
-      <footer></footer>
+      <footer>
+        <Footer />
+      </footer>
     </div>
   );
 }

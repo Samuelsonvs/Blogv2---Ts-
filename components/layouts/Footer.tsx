@@ -13,7 +13,7 @@ const SocialMediaLink = {
 export default function Footer() {
   return (
     <>
-      <div className="mt-10">
+      <div className="mt-10 px-3 mx-auto max-w-3xl">
         <ul className="flex justify-evenly items-center text-gray-500 dark:text-gray-200">
           <li className="hover:bg-gray-200 dark:hover:bg-gray-800 px-3 py-2 rounded-md text-sm lg:text-base font-medium">
             <Link href="/">

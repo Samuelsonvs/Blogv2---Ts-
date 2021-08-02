@@ -26,7 +26,7 @@ export default function Container({
   };
 
   return (
-    <div className="bg-white dark:bg-black max-w-3xl px-3 mx-auto dark:text-gray-300">
+    <div className="bg-white dark:bg-black dark:text-gray-300">
       <Head>
         <title>{meta.title}</title>
         <meta name="robots" content="follow, index" />
@@ -54,7 +54,7 @@ export default function Container({
         resolvedTheme={resolvedTheme}
       />
 
-      <main className="bg-white dark:bg-black px-4">{children}</main>
+      <main className="bg-white dark:bg-black px-7 mx-auto max-w-3xl">{children}</main>
       <footer>
         <Footer />
       </footer>

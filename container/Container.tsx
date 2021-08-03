@@ -54,7 +54,9 @@ export default function Container({
         resolvedTheme={resolvedTheme}
       />
 
-      <main className="bg-white dark:bg-black px-7 mx-auto max-w-3xl">{children}</main>
+      <main className="bg-white dark:bg-black px-7 mx-auto max-w-3xl">
+        {children}
+      </main>
       <footer>
         <Footer />
       </footer>

@@ -10,7 +10,7 @@ export default function projects() {
       <div>
         {projectsDatas.map((data, idx) => {
           return (
-            <div key={idx} className="flex justify-between">
+            <div key={idx} className="flex flex-col md:flex-row justify-between">
               <Image
                 layout="fixed"
                 src={data.url}
@@ -18,7 +18,7 @@ export default function projects() {
                 width={500}
                 height={500}
               />
-              <ul className="mt-28 flex flex-col flex-wrap">
+              <ul className="md:mt-28 flex flex-row md:flex-col flex-wrap">
                 {data.tags.map((tag, index) => {
                   return (
                     <li key={index} className="mt-2">

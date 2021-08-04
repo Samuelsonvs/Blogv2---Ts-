@@ -11,7 +11,6 @@ export default async function handler(
   }
 
   const contactData = JSON.parse(req.body);
-
   const user = await prisma.contact.findFirst({
     where: {
       email: contactData.email,

@@ -5,7 +5,7 @@
     "Mailchimp": ["/svg/mailchimp.svg","https://mailchimp.com"],
     "Markdown": ["/svg/markdown.svg","https://www.markdownguide.org"],
     "MaterialUi": ["/svg/materialui.svg","https://material-ui.com"],
-    "MongoDb": ["/svg/Mongodb.svg","https://www.mongodb.com"],
+    "MongoDb": ["/svg/mongodb.svg","https://www.mongodb.com"],
     "NextJs": ["/svg/nextdotjs.svg","https://nextjs.org"],
     "NodeJs": ["/svg/nodedotjs.svg","https://nodejs.org/en/"],
     "ReactJs": ["/svg/react.svg","https://tr.reactjs.org"],

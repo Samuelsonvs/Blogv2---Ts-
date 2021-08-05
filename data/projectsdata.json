@@ -2,21 +2,21 @@
   {
     "url": "/images/hamsiyerest.png",
     "tags": ["react", "boostrap"],
-    "explanation": ""
+    "explanation": "example of explanation"
   },
   {
     "url": "/images/airbnbreplica.png",
     "tags": ["nextjs", "tailwindcss", "javascript"],
-    "explanation": ""
+    "explanation": "example of explanation"
   },
   {
     "url": "/images/ptiel.png",
     "tags": ["react", "redux", "nodejs", "express", "jsonwebtoken", "mongodb"],
-    "explanation": ""
+    "explanation": "example of explanation"
   },
   {
     "url": "/images/blog.png",
     "tags": ["nextjs", "mongodb", "tailwindcss", "mailchimp", "mdxjs"],
-    "explanation": ""
+    "explanation": "example of explanation"
   }
 ]

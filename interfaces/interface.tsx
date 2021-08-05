@@ -122,6 +122,20 @@ export interface ArticleDevTo {
   ];
 }
 
+export interface ArticleDevToComponent {
+  article: {
+    article: {
+      url: string;
+      comments_count: number;
+      tags: string;
+      positive_reactions_count: number;
+      created_at: string;
+      description: string;
+      title: string;
+  };
+  }
+}
+
 export interface tagName {
   [key: string]: any;
   default: {

@@ -1,10 +1,9 @@
 import React from "react";
-import { SvgInfo } from "@/interfaces/interface";
+import { Children } from "@/interfaces/interface";
 
 export default function SvgCreator({
-  ariaLabel,
   children,
-}: SvgInfo): JSX.Element {
+}: Children): JSX.Element {
   return (
     <svg
       role="img"
@@ -13,7 +12,6 @@ export default function SvgCreator({
       //fill="current"
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
-      aria-labelledby={ariaLabel}
     >
       {children}
     </svg>

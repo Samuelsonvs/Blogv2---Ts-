@@ -7,10 +7,6 @@ export interface ContainerProps extends Children {
   customTitle?: string;
 }
 
-export interface SvgInfo extends Children {
-  ariaLabel: string;
-}
-
 export interface ThemeController {
   themeFunc: (theme: string) => void;
   mounted: boolean;

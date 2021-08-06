@@ -11,16 +11,16 @@ import Newsletter from "@/components/Newsletter";
 
 const tagColorObject: tagColor = {
   framework: {
-    bg: "bg-indigo-200",
-    text: "text-indigo-600",
+    bg: "bg-indigo-100",
+    text: "text-indigo-800",
   },
   blog: {
-    bg: "bg-green-200",
-    text: "text-green-600",
+    bg: "bg-green-100",
+    text: "text-green-800",
   },
   library: {
-    bg: "bg-yellow-200",
-    text: "text-yellow-600",
+    bg: "bg-yellow-100",
+    text: "text-yellow-800",
   },
 };
 

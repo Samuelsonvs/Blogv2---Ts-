@@ -76,7 +76,6 @@ export default function Newsletter({
               placeholder="Enter your email"
               {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
             />
-            {/* errors will return when field validation fails  */}
             <input
               className="button-active-effect mt-5 sm:mt-0 sm:ml-5 py-3 px-7 rounded bg-indigo-500 cursor-pointer"
               value="Submit Button"

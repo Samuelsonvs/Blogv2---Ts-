@@ -33,11 +33,11 @@ export default function Container({
         <meta content={meta.description} name="description" />
         <meta
           property="og:url"
-          content={`https://blogv2-ts.vercel.app${router.asPath}`}
+          content={`https://msatali.com${router.asPath}`}
         />
         <link
           rel="canonical"
-          href={`https://blogv2-ts.vercel.app${router.asPath}`}
+          href={`https://msatali.com${router.asPath}`}
         />
         <meta property="og:type" content={meta.type} />
         <meta property="og:site_name" content="Mert Samet" />

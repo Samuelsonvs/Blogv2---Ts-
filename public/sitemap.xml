@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>https://blogv2-ts.vercel.app/</loc>
+<loc>https://msatali.com/</loc>
 </url>
 <url>
-<loc>https://blogv2-ts.vercel.app/blog/item?page=1</loc>
+<loc>https://msatali.com/blog/item?page=1</loc>
 </url>
 <url>
-<loc>https://blogv2-ts.vercel.app/blog/item?page=2</loc>
+<loc>https://msatali.com/blog/item?page=2</loc>
 </url>
 <url>
-<loc>https://blogv2-ts.vercel.app/blog/item?page=3</loc>
+<loc>https://msatali.com/blog/item?page=3</loc>
 </url>
 <url>
-<loc>https://blogv2-ts.vercel.app/blog/item?page=4</loc>
+<loc>https://msatali.com/blog/item?page=4</loc>
 </url>
 <url>
-<loc>https://blogv2-ts.vercel.app/blog/item?page=5</loc>
+<loc>https://msatali.com/blog/item?page=5</loc>
 </url>
 <url>
-<loc>https://blogv2-ts.vercel.app/projects</loc>
+<loc>https://msatali.com/projects</loc>
 </url>
 </urlset>

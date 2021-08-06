@@ -46,9 +46,7 @@ export default function Blog({ articles }: ArticleDevTo): JSX.Element {
           {articles
             .slice(pageInfo.articlesFirstNum, pageInfo.articlesLastNum)
             .map((article, idx) => {
-              return (
-                <DevtoCard key={idx} article={article} />
-              );
+              return <DevtoCard key={idx} article={article} />;
             })}
         </div>
         <div className="flex justify-center mt-6 md:mt-3">

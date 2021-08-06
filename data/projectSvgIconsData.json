@@ -1,14 +1,14 @@
 {
-    "Bootstrap" : ["/svg/bootstrap.svg", "https://getbootstrap.com"],
-    "Express": ["/svg/express.svg","https://expressjs.com"],
-    "Jsonwebtokens": ["/svg/jsonwebtokens.svg","https://jwt.io"],
-    "Mailchimp": ["/svg/mailchimp.svg","https://mailchimp.com"],
-    "Markdown": ["/svg/markdown.svg","https://www.markdownguide.org"],
-    "MaterialUi": ["/svg/materialui.svg","https://material-ui.com"],
-    "MongoDb": ["/svg/mongodb.svg","https://www.mongodb.com"],
-    "NextJs": ["/svg/nextdotjs.svg","https://nextjs.org"],
-    "NodeJs": ["/svg/nodedotjs.svg","https://nodejs.org/en/"],
-    "ReactJs": ["/svg/react.svg","https://tr.reactjs.org"],
-    "Redux": ["/svg/redux.svg","https://redux-toolkit.js.org"],
-    "TailwindCss": ["/svg/tailwindcss.svg","https://tailwindcss.com"]
+  "Bootstrap": ["/svg/bootstrap.svg", "https://getbootstrap.com"],
+  "Express": ["/svg/express.svg", "https://expressjs.com"],
+  "Jsonwebtokens": ["/svg/jsonwebtokens.svg", "https://jwt.io"],
+  "Mailchimp": ["/svg/mailchimp.svg", "https://mailchimp.com"],
+  "Markdown": ["/svg/markdown.svg", "https://www.markdownguide.org"],
+  "MaterialUi": ["/svg/materialui.svg", "https://material-ui.com"],
+  "MongoDb": ["/svg/mongodb.svg", "https://www.mongodb.com"],
+  "NextJs": ["/svg/nextdotjs.svg", "https://nextjs.org"],
+  "NodeJs": ["/svg/nodedotjs.svg", "https://nodejs.org/en/"],
+  "ReactJs": ["/svg/react.svg", "https://tr.reactjs.org"],
+  "Redux": ["/svg/redux.svg", "https://redux-toolkit.js.org"],
+  "TailwindCss": ["/svg/tailwindcss.svg", "https://tailwindcss.com"]
 }

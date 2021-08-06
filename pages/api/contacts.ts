@@ -18,7 +18,7 @@ export default async function handler(
   });
 
   if (user) {
-    res.json(1);   // Email already has been registered 
+    res.json(1); // Email already has been registered
   } else {
     const savedContact = await prisma.contact.create({
       data: contactData,

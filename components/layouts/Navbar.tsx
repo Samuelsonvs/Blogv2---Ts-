@@ -67,7 +67,10 @@ export default function Navbar({
         </div>
         {/* mobile  */}
         <div className="sm:hidden">
-          <button aria-label="Mobile Button" onClick={() => setIsShowing((isShowing) => !isShowing)}>
+          <button
+            aria-label="Mobile Button"
+            onClick={() => setIsShowing((isShowing) => !isShowing)}
+          >
             {mounted &&
               (isShowing ? (
                 <SvgCreator>

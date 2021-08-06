@@ -128,8 +128,8 @@ export interface ArticleDevToComponent {
       created_at: string;
       description: string;
       title: string;
+    };
   };
-  }
 }
 
 export interface tagName {

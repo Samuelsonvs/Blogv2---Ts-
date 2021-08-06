@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>https://blogv2-ts.vercel.app/</loc>
+</url>
+<url>
+<loc>https://blogv2-ts.vercel.app/blog/item?page=1</loc>
+</url>
+<url>
+<loc>https://blogv2-ts.vercel.app/blog/item?page=2</loc>
+</url>
+<url>
+<loc>https://blogv2-ts.vercel.app/blog/item?page=3</loc>
+</url>
+<url>
+<loc>https://blogv2-ts.vercel.app/blog/item?page=4</loc>
+</url>
+<url>
+<loc>https://blogv2-ts.vercel.app/blog/item?page=5</loc>
+</url>
+<url>
+<loc>https://blogv2-ts.vercel.app/projects</loc>
+</url>
+</urlset>

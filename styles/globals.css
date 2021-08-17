@@ -6,7 +6,7 @@
   font-family: "Roboto Slab";
   font-style: normal;
   font-weight: 100 900;
-  font-display: optional;
+  font-display: block;
   src: url("/font/RobotoSlab-VariableFont_wght.woff2") format("woff2");
 }
 

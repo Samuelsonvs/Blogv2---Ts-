@@ -18,7 +18,7 @@ export default function Container({
 
   const router = useRouter();
   const meta = {
-    title: customTitle ? customTitle : "Mert Samet Atalı – Developer, creator.",
+    title: customTitle ? customTitle : "Mert Samet Atalı – Developer.",
     description: `Front-end developer, JavaScript enthusiast.`,
     image: "",
     type: "website",

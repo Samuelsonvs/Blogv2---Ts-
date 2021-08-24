@@ -1,5 +1,4 @@
 import React from 'react';
-import { notionElementStyle } from "@/data/notionElements";
 import Image from "next/image";
 
 const NotionElementGenerator = (element:any) =>  {
@@ -8,7 +7,7 @@ const NotionElementGenerator = (element:any) =>  {
     switch (type) {
         case "paragraph":
           return (
-            <p className={`${notionElementStyle[type]}`}>
+            <p className="py-5 text-xl">
               {content}
             </p>
           );
@@ -24,20 +23,20 @@ const NotionElementGenerator = (element:any) =>  {
           );
         case "heading_2":
           return (
-            <h2 className={`${notionElementStyle[type]}`}>
+            <h2 className="text-3xl">
               {content}
             </h2>
           );
         case "heading_3":
           return (
-            <h3 className={`${notionElementStyle[type]}`}>
+            <h3 className="text-2xl">
               {content}
             </h3>
           );
         case "bulleted_list_item":
         case "numbered_list_item":
           return (
-            <li className={`${notionElementStyle[type]}`}>
+            <li className="">
               {content}
             </li>
           );

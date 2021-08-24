@@ -198,11 +198,3 @@ export interface contactInfo {
   totalEmail: number;
   setTotalEmail: Dispatch<SetStateAction<any>>;
 }
-
-export interface notionElementVariants {
-  [key: string]: any;
-  heading_1: string;
-  heading_2: string;
-  heading_3: string;
-  paragraph: string;
-}

@@ -8,7 +8,7 @@ const NotionElementGenerator = (element:any) =>  {
     switch (type) {
         case "paragraph":
           return (
-            <p className={notionElementStyle[type]}>
+            <p className={`${notionElementStyle[type]}`}>
               {content}
             </p>
           );
@@ -24,20 +24,20 @@ const NotionElementGenerator = (element:any) =>  {
           );
         case "heading_2":
           return (
-            <h2 className={notionElementStyle[type]}>
+            <h2 className={`${notionElementStyle[type]}`}>
               {content}
             </h2>
           );
         case "heading_3":
           return (
-            <h3 className={notionElementStyle[type]}>
+            <h3 className={`${notionElementStyle[type]}`}>
               {content}
             </h3>
           );
         case "bulleted_list_item":
         case "numbered_list_item":
           return (
-            <li className={notionElementStyle[type]}>
+            <li className={`${notionElementStyle[type]}`}>
               {content}
             </li>
           );

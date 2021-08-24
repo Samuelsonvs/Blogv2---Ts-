@@ -18,7 +18,7 @@ const NotionElementGenerator = (element:any) =>  {
             )
         case "heading_1":
           return (
-            <h1 className={notionElementStyle[type]}>
+            <h1 className="text-5xl">
               {content}
             </h1>
           );

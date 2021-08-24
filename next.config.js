@@ -24,8 +24,8 @@ module.exports = {
 
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' *dev.to *notion.so;
-  child-src *.google.com *dev.to *notion.so;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline';
+  child-src *.google.com;
   style-src 'self' 'unsafe-inline';
   img-src * blob: data:;
   media-src 'none';

@@ -13,7 +13,7 @@ export interface ThemeController {
   resolvedTheme: string | undefined;
 }
 
-export interface NotionPrisma {
+export interface NotionDB {
   response_db: {
     results: [
       {
@@ -38,6 +38,8 @@ export interface NotionPrisma {
       }
     ];
   };
+}
+export interface NotionPrisma extends NotionDB {
   response_page: {
     results: [
       {
@@ -48,15 +50,7 @@ export interface NotionPrisma {
             }
           ];
         };
-      },
-      {
-        paragraph: {
-          text: [
-            {
-              plain_text: string;
-            }
-          ];
-        };
+        type: string;
       },
       {
         heading_2: {
@@ -66,6 +60,17 @@ export interface NotionPrisma {
             }
           ];
         };
+        type: string;
+      },
+      {
+        heading_3: {
+          text: [
+            {
+              plain_text: string;
+            }
+          ];
+        };
+        type: string;
       },
       {
         paragraph: {
@@ -75,6 +80,7 @@ export interface NotionPrisma {
             }
           ];
         };
+        type: string;
       }
     ];
   };
@@ -191,4 +197,12 @@ export interface EmailInput {
 export interface contactInfo {
   totalEmail: number;
   setTotalEmail: Dispatch<SetStateAction<any>>;
+}
+
+export interface notionElementVariants {
+  [key: string]: any;
+  heading_1: string;
+  heading_2: string;
+  heading_3: string;
+  paragraph: string;
 }

@@ -7,7 +7,8 @@ import SvgCreator from "@/components/SvgCreator";
 
 const navList = [
   { name: "Home", route: "/" },
-  { name: "Blog", route: "/blog/item?page=1" },
+  { name: "Blog", route: "/blog" },
+  { name: "Dev.to", route: "/devto/item?page=1"},
   { name: "Projects", route: "/projects" },
 ];
 
@@ -68,6 +69,7 @@ export default function Navbar({
         {/* mobile  */}
         <div className="sm:hidden">
           <button
+            className="absolute top-4 right-2 z-50"
             aria-label="Mobile Button"
             onClick={() => setIsShowing((isShowing) => !isShowing)}
           >
@@ -90,8 +92,9 @@ export default function Navbar({
                   />
                 </SvgCreator>
               ))}
+              </button>
             <Transition
-              className="bg-white dark:bg-black absolute top-3 right-10 left-0 bottom-0 rounded-md"
+              className="bg-white dark:bg-black absolute top-0 right-0 left-0 bottom-0 rounded-md"
               show={isShowing}
               enter="transition-opacity duration-75"
               enterFrom="opacity-0"
@@ -112,7 +115,6 @@ export default function Navbar({
                 ))}
               </ul>
             </Transition>
-          </button>
         </div>
         {/* mobile finish  */}
       </nav>

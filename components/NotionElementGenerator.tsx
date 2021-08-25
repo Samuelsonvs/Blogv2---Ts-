@@ -1,9 +1,28 @@
 import React from 'react';
 import Image from "next/image";
 
-const NotionElementGenerator = (element:any) =>  {
+interface NotionElementGeneratorTypes {
+  [key: string]: any;
+    variable: {
+      text : [
+        {
+          text: {
+            content: string
+          }
+        }
+      ]
+    };
+    image: {
+      file : {
+        url: string
+      }
+    };
+    type: string
+}
+
+const NotionElementGenerator = (element : NotionElementGeneratorTypes) =>  {
     const type = element.type
-    const content = element[type]?.text[0]?.text.content
+    const content = element.type === "unsupported" ? "unsupported" : element.type === "image" ? "image" : element[type]?.text[0]?.text?.content
     switch (type) {
         case "paragraph":
           return (
@@ -13,7 +32,7 @@ const NotionElementGenerator = (element:any) =>  {
           );
         case "image":
             return (
-                <Image src={element[type].file.url} layout="fill" alt={"notion-image"} /> 
+                <Image src={element[type].file.url} width={250} height={250} alt={"notion-image"} /> 
             )
         case "heading_1":
           return (

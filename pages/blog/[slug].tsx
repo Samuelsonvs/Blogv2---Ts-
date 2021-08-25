@@ -1,78 +1,66 @@
-import React, { useState } from "react";
-import { GetServerSideProps, GetServerSidePropsContext } from "next";
-import { useRouter } from "next/router";
+import React from 'react'
+import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next'
+import { getPostsFromDatabase, getPostsFromSlug, getPages } from '@/lib/notionBlogPages';
+import NotionElementGenerator from "@/components/NotionElementGenerator";
+import Container from '@/container/Container';
 
-import { getReadingList } from "@/lib/devto";
-import Container from "@/container/Container";
-import { ArticleDevTo } from "@/interfaces/interface";
-import Pagination from "@/components/Pagination";
-import DevtoCard from "@/components/DevtoCard";
 
-export default function Blog({ articles }: ArticleDevTo): JSX.Element {
-  const router = useRouter();
-  const perPage = 3;
-
-  const articlesLength = articles.length;
-  const totalPage = Math.ceil(articlesLength / perPage);
-
-  const routerNum: number = Number(router.query.page);
-  const filteredRouterNum =
-    routerNum <= totalPage && 0 < routerNum ? routerNum : 1;
-
-  const [pageInfo, setPageInfo] = useState({
-    pageNow: filteredRouterNum,
-    articlesFirstNum: (filteredRouterNum - 1) * perPage,
-    articlesLastNum: filteredRouterNum * perPage,
-  });
-
-  return (
-    <Container customTitle={"Dev.to – Mert Samet Atalı"}>
-      <section>
-        <div>
-          <h2 className="text-3xl sm:text-4xl">
-            <span>My&nbsp;</span>
-            <a
-              href="https://dev.to"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline"
-            >
-              Dev.to
-            </a>
-            <span>&nbsp;reading list</span>
-          </h2>
-        </div>
-        <div className="min-h-75">
-          {articles
-            .slice(pageInfo.articlesFirstNum, pageInfo.articlesLastNum)
-            .map((article, idx) => {
-              return <DevtoCard key={idx} article={article} />;
-            })}
-        </div>
-        <div className="flex justify-center mt-6 md:mt-3">
-          {totalPage > 1 && (
-            <Pagination
-              pageInfo={pageInfo}
-              setPageInfo={setPageInfo}
-              totalPage={totalPage}
-              perPage={perPage}
-              filteredRouterNum={filteredRouterNum}
-            />
-          )}
-        </div>
-      </section>
-    </Container>
-  );
+interface NotionElementGeneratorTypes {
+  [key: string]: any;
+    variable: {
+      text : [
+        {
+          text: {
+            content: string
+          }
+        }
+      ]
+    };
+    image: {
+      file : {
+        url: string
+      }
+    };
+    type: string
 }
 
-export const getServerSideProps: GetServerSideProps = async (
-  context: GetServerSidePropsContext
-) => {
-  const articles = await getReadingList();
+export default function Post({ post }:any) { 
+  return (
+      <Container>
+          <div>
+            {post.map((section:NotionElementGeneratorTypes, idx:number) => {
+              return (
+                <div key={idx}>
+                  {NotionElementGenerator(section)}
+                </div>
+              )
+            })} 
+          </div>
+        </Container>
+    )
+}
 
-  return {
-    props: {
-      articles,
-    },
+
+export const getStaticPaths: GetStaticPaths = async () => {
+    const database = await getPostsFromDatabase();
+    return {
+        paths: database.map((page:any) => ({ params: { slug: page.properties.Slug.rich_text[0].text.content}})),
+        fallback: false,
+    };
+}
+
+
+export const getStaticProps: GetStaticProps = async (
+    context: GetStaticPropsContext
+  ) => {
+    const { slug }:any  = context.params;
+
+    const postID = await getPostsFromSlug(slug)
+    const post = await getPages(postID)
+    return {
+      props: {
+        post
+      },
+      revalidate: 60,
+    };
   };
-};

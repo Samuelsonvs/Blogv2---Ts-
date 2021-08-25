@@ -12,7 +12,7 @@ import NotionDb from "@/components/NotionDb";
 import NotionElementGenerator from "@/components/NotionElementGenerator";
 
 export default function Notionpage({
-  response_page,
+  page,
   totalCount,
   response_db,
 }: NotionPrisma): JSX.Element {
@@ -29,10 +29,10 @@ export default function Notionpage({
           />
         </div>
         <div className="mt-7">
-          {response_page.results.map((element: any, idx: number) => {
+          {page.map((section: any, idx: number) => {
             return (
               <div key={idx}>
-                {NotionElementGenerator(element)}
+                {NotionElementGenerator(section)}
               </div>
             );
           })}
@@ -57,12 +57,12 @@ export const getStaticProps: GetStaticProps = async (
       email: true,
     },
   });
-  const response_page = await getPages();
+  const page = await getPages();
   const response_db = await getDatabase();
 
   return {
     props: {
-      response_page,
+      page,
       response_db,
       totalCount,
     },

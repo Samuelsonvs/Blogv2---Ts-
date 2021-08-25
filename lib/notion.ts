@@ -4,8 +4,8 @@ const notion = new Client({ auth: process.env.NOTION_KEY });
 
 export const getPages = async () => {
   const pageId = process.env.NOTION_PAGE_ID || "";
-  const response_page = await notion.blocks.children.list({ block_id: pageId });
-  return response_page;
+  const { results } = await notion.blocks.children.list({ block_id: pageId });
+  return results;
 };
 
 export const getDatabase = async () => {

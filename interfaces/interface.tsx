@@ -40,8 +40,7 @@ export interface NotionDB {
   };
 }
 export interface NotionPrisma extends NotionDB {
-  response_page: {
-    results: [
+    page: [
       {
         heading_1: {
           text: [
@@ -82,8 +81,7 @@ export interface NotionPrisma extends NotionDB {
         };
         type: string;
       }
-    ];
-  };
+    ]; 
   initialContacts: any;
   totalCount: {
     _count: {

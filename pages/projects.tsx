@@ -6,6 +6,7 @@ import projectsDatas from "@/data/projectsData.json";
 import SvgIcons from "@/data/projectSvgIconsData.json";
 import ExternalLink from "@/public/svg/externalLink.svg";
 import Github from "@/public/svg/github.svg";
+import { shimmer, toBase64 } from '@/util/toBase64Blur';
 
 export default function projects() {
   return (
@@ -19,6 +20,8 @@ export default function projects() {
                   <Image
                     src={data.url}
                     alt="github-icon"
+                    placeholder="blur"
+                    blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(500, 334))}`}
                     width={500}
                     height={500}
                   />

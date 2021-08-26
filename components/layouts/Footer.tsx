@@ -15,22 +15,22 @@ export default function Footer() {
     <>
       <div className="mt-10 px-3 mx-auto max-w-3xl">
         <ul className="flex justify-evenly items-center text-gray-500 dark:text-gray-200">
-          <li className="hover:bg-gray-200 dark:hover:bg-gray-800 px-3 py-2 rounded-md text-sm lg:text-base font-medium">
+          <li className="hover:bg-gray-200 dark:hover:bg-gray-800 px-2 py-2 rounded-md text-sm lg:text-base font-medium">
             <Link href="/">
               <a>Home</a>
             </Link>
           </li>
-          <li className="hover:bg-gray-200 dark:hover:bg-gray-800 px-3 py-2 rounded-md text-sm lg:text-base font-medium">
+          <li className="hover:bg-gray-200 dark:hover:bg-gray-800 px-2 py-2 rounded-md text-sm lg:text-base font-medium">
             <Link href="/blog">
               <a>Blog</a>
             </Link>
           </li>
-          <li className="hover:bg-gray-200 dark:hover:bg-gray-800 px-3 py-2 rounded-md text-sm lg:text-base font-medium">
+          <li className="hover:bg-gray-200 dark:hover:bg-gray-800 px-2 py-2 rounded-md text-sm lg:text-base font-medium">
             <Link href="/devto/item?page=1">
               <a>Dev.to Reading List</a>
             </Link>
           </li>
-          <li className="hover:bg-gray-200 dark:hover:bg-gray-800 px-3 py-2 rounded-md text-sm lg:text-base font-medium">
+          <li className="hover:bg-gray-200 dark:hover:bg-gray-800 px-2 py-2 rounded-md text-sm lg:text-base font-medium">
             <Link href="/projects">
               <a>Projects</a>
             </Link>

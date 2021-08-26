@@ -9,6 +9,8 @@ import { shimmer, toBase64 } from '@/util/toBase64Blur';
 export default function index({PostDB}: any) {
     return (
         <Container>
+            <div>
+            <h2 className="py-5 text-3xl sm:text-4xl"><span>My&nbsp;</span><a href="https://www.notion.so/" target="_blank" rel="noopener noreferrer" className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-blue-500 to-purple-600">Notion</a><span>&nbsp;blog posts</span></h2>
             {PostDB.map((post:any,idx:number) => {
                 const date = new Date(post.last_edited_time).toLocaleString(
                     "en-US",
@@ -22,7 +24,7 @@ export default function index({PostDB}: any) {
                 return (
                     <article key={post.id} className="py-2 flex flex-col items-center">
                         <div className="p-5 border-2 border-gray-500/50 rounded-xl">
-                            <Image className="rounded-xl" placeholder="blur" blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(500, 334))}`} src={properties.Column.files[0].file.url} alt={properties.Column.files[0].name} width={500} height={334} />
+                            <Image className="rounded-xl" placeholder="blur" blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(640, 427))}`} src={properties.Column.files[0].file.url} alt={properties.Column.files[0].name} width={640} height={427} />
                             <div className="opacity-70">
                                 {date}
                             </div>
@@ -32,10 +34,10 @@ export default function index({PostDB}: any) {
                                 </div>
                             </div>
                             <div className="py-3"> 
-                                {properties.Description.rich_text[0].text.content}
+                                {properties.Preview.rich_text[0].text.content}
                             </div>
                             <div>
-                                <Link href={`blog/${properties.Slug.rich_text[0].text.content}`}>
+                                <Link href="/blog/[slug]" as={`blog/${properties.Slug.rich_text[0].text.content}`}>
                                     <a className="text-blue-700 text-xl hover:underline">
                                         Continue reading ➞
                                     </a>
@@ -45,6 +47,7 @@ export default function index({PostDB}: any) {
                     </article>
                 )
             })}
+            </div>
         </Container>
     )
 }

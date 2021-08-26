@@ -19,7 +19,7 @@ export default function Navbar({
 }: ThemeController): JSX.Element {
   const [isShowing, setIsShowing] = useState(false);
   return (
-    <header className="sticky top-0 z-20 bg-opacity-50 transition ease-in backdrop-filter backdrop-blur-lg backdrop-saturate-150 px-3 mx-auto max-w-3xl">
+    <header className="sticky top-0 z-20 bg-opacity-50 transition ease-in backdrop-filter backdrop-blur-lg backdrop-saturate-150 mx-auto max-w-3xl">
       <nav
         className={`bg-white dark:bg-black ${
           !isShowing ? "dark:bg-opacity-50 bg-opacity-50" : ""
@@ -28,7 +28,7 @@ export default function Navbar({
         <div className="flex">
           <button
             aria-label="Dark-Light"
-            className="px-2"
+            className="px-2 ml-3"
             onClick={() =>
               themeFunc(resolvedTheme === "dark" ? "light" : "dark")
             }

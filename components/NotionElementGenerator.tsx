@@ -1,6 +1,8 @@
 import React from 'react';
 import Image from "next/image";
 import { shimmer, toBase64 } from '@/util/toBase64Blur';
+import Prism from "prismjs"
+import Parse from "html-react-parser"
 
 interface NotionElementGeneratorTypes {
   [key: string]: any;
@@ -28,23 +30,25 @@ interface NotionElementGeneratorTypes {
     type: string
 }
 
+
 const NotionElementGenerator = (element : NotionElementGeneratorTypes) =>  {
     const type = element.type
     const content = element.type === "unsupported" ? "unsupported" : element.type === "image" ? "image" : element[type]?.text[0]?.text?.content
     const sizes = element.image?.caption?.[0] ? element.image.caption[0].text.content.split(",") : ["400","500"]
+    const codeBlock = element.type === "numbered_list_item" ? element[type]?.text[0]?.text?.content.split(',,,') : null
+    const codeType = codeBlock ? codeBlock[0].trim() : null
+    const code = codeBlock ? codeBlock[1] : null
     switch (type) {
         case "paragraph":
           return (
-            <div className="py-3 text-xl">
-              <p>
-                {content}
-              </p>
+            <div className="py-3 text-xl leading-8">
+              <p>{content}</p>
             </div>
           );
         case "image":
             return (
               <div className="py-3">
-                <Image src={element[type].file.url} placeholder="blur" blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(500, 334))}`} width={sizes[0]} height={sizes[1]} alt={"notion-image"} /> 
+                <Image src={element[type].file.url} className="rounded-xl" placeholder="blur" blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(500, 334))}`} width={sizes[0]} height={sizes[1]} alt={"notion-image"} /> 
               </div>
             )
         case "heading_1":
@@ -72,13 +76,20 @@ const NotionElementGenerator = (element : NotionElementGeneratorTypes) =>  {
             </div>
           );
         case "bulleted_list_item":
-        case "numbered_list_item":
           return (
             <ul className="py-3">
               <li>
                 {content}
               </li>
             </ul>
+          );
+        case "numbered_list_item":
+          return (
+            <div className="py-3 text-base overflow-auto">
+              <pre>
+                {Parse(Prism.highlight(code, Prism.languages[codeType], `${codeType}`))}
+              </pre>
+            </div>
           );
         case "to_do":
           return (

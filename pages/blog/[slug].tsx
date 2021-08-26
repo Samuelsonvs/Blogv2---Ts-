@@ -4,7 +4,6 @@ import { getPostsFromDatabase, getPostsFromSlug, getPages } from '@/lib/notionBl
 import NotionElementGenerator from "@/components/NotionElementGenerator";
 import Container from '@/container/Container';
 
-
 interface NotionElementGeneratorTypes {
   [key: string]: any;
     variable: {
@@ -24,7 +23,7 @@ interface NotionElementGeneratorTypes {
     type: string
 }
 
-export default function Post({ post }:any) { 
+export default function Post({ post }:any) {
   return (
       <Container>
           <div>

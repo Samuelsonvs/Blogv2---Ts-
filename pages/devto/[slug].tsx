@@ -35,7 +35,7 @@ export default function Blog({ articles }: ArticleDevTo): JSX.Element {
               href="https://dev.to"
               target="_blank"
               rel="noopener noreferrer"
-              className="underline"
+              className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-blue-500 to-purple-600"
             >
               Dev.to
             </a>

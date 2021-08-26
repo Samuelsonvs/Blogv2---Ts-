@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from "next/image";
+import { shimmer, toBase64 } from '@/util/toBase64Blur';
 
 interface NotionElementGeneratorTypes {
   [key: string]: any;
@@ -15,7 +16,14 @@ interface NotionElementGeneratorTypes {
     image: {
       file : {
         url: string
-      }
+      },
+      caption?: [
+        {
+          text: {
+            content: string
+          }
+        }
+      ]
     };
     type: string
 }
@@ -23,55 +31,74 @@ interface NotionElementGeneratorTypes {
 const NotionElementGenerator = (element : NotionElementGeneratorTypes) =>  {
     const type = element.type
     const content = element.type === "unsupported" ? "unsupported" : element.type === "image" ? "image" : element[type]?.text[0]?.text?.content
+    const sizes = element.image?.caption?.[0] ? element.image.caption[0].text.content.split(",") : ["400","500"]
     switch (type) {
         case "paragraph":
           return (
-            <p className="py-5 text-xl">
-              {content}
-            </p>
+            <div className="py-3 text-xl">
+              <p>
+                {content}
+              </p>
+            </div>
           );
         case "image":
             return (
-                <Image src={element[type].file.url} width={250} height={250} alt={"notion-image"} /> 
+              <div className="py-3">
+                <Image src={element[type].file.url} placeholder="blur" blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(500, 334))}`} width={sizes[0]} height={sizes[1]} alt={"notion-image"} /> 
+              </div>
             )
         case "heading_1":
           return (
-            <h1 className="text-5xl">
-              {content}
-            </h1>
+            <div className="text-5xl py-3">
+              <h1>
+                {content}
+              </h1>
+            </div>
           );
         case "heading_2":
           return (
-            <h2 className="text-3xl">
-              {content}
-            </h2>
+            <div className="text-3xl py-3">
+              <h2>
+                {content}
+              </h2>
+            </div>
           );
         case "heading_3":
           return (
-            <h3 className="text-2xl">
-              {content}
-            </h3>
+            <div className="text-2xl py-3">
+              <h3>
+                {content}
+              </h3>
+            </div>
           );
         case "bulleted_list_item":
         case "numbered_list_item":
           return (
-            <li className="">
-              {content}
-            </li>
+            <ul className="py-3">
+              <li>
+                {content}
+              </li>
+            </ul>
           );
         case "to_do":
           return (
             <div>
+              <input type="checkbox" className="mr-2" id={element.id} defaultChecked={element[type]?.checked} />
               <label htmlFor={element.id}>
-                <input type="checkbox" id={element.id} defaultChecked={element[type]?.checked} />
-                {content}
+              {content}
               </label>
             </div>
           );
         default:
-          return `❌ Unsupported block (${
-            type === "unsupported" ? "unsupported by Notion API" : type
-          })`;
+          return (
+            <div className="py-3">
+              {
+                `❌ Unsupported block (${
+                      type === "unsupported" ? "unsupported by Notion API" : type
+                })`
+              }
+            </div>
+          )
     }
                 
    

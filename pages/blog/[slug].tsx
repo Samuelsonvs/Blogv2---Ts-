@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next'
 import { getPostsFromDatabase, getPostsFromSlug, getPages } from '@/lib/notionBlogPages';
 import NotionElementGenerator from "@/components/NotionElementGenerator";
@@ -30,9 +30,9 @@ export default function Post({ post }:any) {
           <div>
             {post.map((section:NotionElementGeneratorTypes, idx:number) => {
               return (
-                <div key={idx}>
+                <Fragment key={idx}>
                   {NotionElementGenerator(section)}
-                </div>
+                </Fragment>
               )
             })} 
           </div>

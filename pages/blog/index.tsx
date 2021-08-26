@@ -4,6 +4,7 @@ import Link from "next/link";
 import React from 'react'
 import { getPostsFromDatabase } from '@/lib/notionBlogPages';
 import Container from '@/container/Container';
+import { shimmer, toBase64 } from '@/util/toBase64Blur';
 
 export default function index({PostDB}: any) {
     return (
@@ -21,7 +22,7 @@ export default function index({PostDB}: any) {
                 return (
                     <article key={post.id} className="py-2 flex flex-col items-center">
                         <div className="p-5 border-2 border-gray-500/50 rounded-xl">
-                            <Image className="rounded-xl" src={properties.Column.files[0].file.url} alt={properties.Column.files[0].name} width={500} height={334} />
+                            <Image className="rounded-xl" placeholder="blur" blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(500, 334))}`} src={properties.Column.files[0].file.url} alt={properties.Column.files[0].name} width={500} height={334} />
                             <div className="opacity-70">
                                 {date}
                             </div>

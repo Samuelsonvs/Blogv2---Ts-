@@ -26,7 +26,7 @@ interface NotionElementGeneratorTypes {
 export default function Post({ post }:any) {
   return (
       <Container>
-          <div>
+          <article>
             {post.map((section:NotionElementGeneratorTypes, idx:number) => {
               return (
                 <Fragment key={idx}>
@@ -34,7 +34,7 @@ export default function Post({ post }:any) {
                 </Fragment>
               )
             })} 
-          </div>
+          </article>
         </Container>
     )
 }

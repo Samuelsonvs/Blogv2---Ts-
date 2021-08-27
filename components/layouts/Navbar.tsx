@@ -28,7 +28,7 @@ export default function Navbar({
         <div className="flex">
           <button
             aria-label="Dark-Light"
-            className="px-2 ml-3"
+            className="px-2 ml-3 focus:outline-none"
             onClick={() =>
               themeFunc(resolvedTheme === "dark" ? "light" : "dark")
             }
@@ -69,7 +69,7 @@ export default function Navbar({
         {/* mobile  */}
         <div className="sm:hidden">
           <button
-            className="absolute top-4 right-2 z-50"
+            className="absolute top-4 right-2 z-50 focus:outline-none"
             aria-label="Mobile Button"
             onClick={() => setIsShowing((isShowing) => !isShowing)}
           >

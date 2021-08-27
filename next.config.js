@@ -19,7 +19,21 @@ module.exports = {
   },
   images: {
     domains: ['s3.us-west-2.amazonaws.com']
-  }
+  },
+  presets: ['next/babel'],
+  plugins: [
+    [
+      'transform-define'
+    ],
+    [
+      'prismjs', {
+        'languages': ['javascript', 'css', 'html', 'jsx'],
+        'plugins': ['line-numbers', 'show-language', 'copy-to-clipboard'],
+        'theme': 'default',
+        'css': true
+      },
+    ]
+  ],
 };
 
 const ContentSecurityPolicy = `

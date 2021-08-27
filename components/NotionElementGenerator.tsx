@@ -1,9 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Image from "next/image";
 import { shimmer, toBase64 } from '@/util/toBase64Blur';
 import Prism from "prismjs"
-import Parse from "html-react-parser"
-
 interface NotionElementGeneratorTypes {
   [key: string]: any;
     variable: {
@@ -38,6 +36,9 @@ const NotionElementGenerator = (element : NotionElementGeneratorTypes) =>  {
     const codeBlock = element.type === "numbered_list_item" ? element[type]?.text[0]?.text?.content.split(',,,') : null
     const codeType = codeBlock ? codeBlock[0].trim() : null
     const code = codeBlock ? codeBlock[1] : null
+    useEffect(() => {
+      Prism.highlightAll();
+    }, []);
     switch (type) {
         case "paragraph":
           return (
@@ -79,15 +80,15 @@ const NotionElementGenerator = (element : NotionElementGeneratorTypes) =>  {
           return (
             <ul className="py-3">
               <li>
-                {content}
+                • {content}
               </li>
             </ul>
           );
         case "numbered_list_item":
           return (
-            <div className="py-3 text-base overflow-auto">
-              <pre>
-                {Parse(Prism.highlight(code, Prism.languages[codeType], `${codeType}`))}
+            <div>
+              <pre className="line-numbers border border-opacity-50 border-gray-500 rounded-md py-3 px-2 bg-gray-100 dark:bg-gray-900">
+                <code className={`language-${codeType}`}>{code}</code>
               </pre>
             </div>
           );

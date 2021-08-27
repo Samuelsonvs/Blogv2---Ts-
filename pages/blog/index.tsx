@@ -7,6 +7,7 @@ import Container from '@/container/Container';
 import { shimmer, toBase64 } from '@/util/toBase64Blur';
 
 export default function index({PostDB}: any) {
+    console.log(PostDB)
     return (
         <Container>
             <div>

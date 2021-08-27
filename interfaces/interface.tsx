@@ -196,3 +196,29 @@ export interface contactInfo {
   totalEmail: number;
   setTotalEmail: Dispatch<SetStateAction<any>>;
 }
+
+export interface NotionElementGeneratorTypes {
+  [key: string]: any;
+    variable: {
+      text : [
+        {
+          text: {
+            content: string
+          }
+        }
+      ]
+    };
+    image: {
+      file : {
+        url: string
+      },
+      caption?: [
+        {
+          text: {
+            content: string
+          }
+        }
+      ]
+    };
+    type: string
+}

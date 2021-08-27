@@ -2,31 +2,7 @@ import React, { useEffect } from 'react';
 import Image from "next/image";
 import { shimmer, toBase64 } from '@/util/toBase64Blur';
 import Prism from "prismjs"
-interface NotionElementGeneratorTypes {
-  [key: string]: any;
-    variable: {
-      text : [
-        {
-          text: {
-            content: string
-          }
-        }
-      ]
-    };
-    image: {
-      file : {
-        url: string
-      },
-      caption?: [
-        {
-          text: {
-            content: string
-          }
-        }
-      ]
-    };
-    type: string
-}
+import { NotionElementGeneratorTypes } from "@/interfaces/interface";
 
 
 const NotionElementGenerator = (element : NotionElementGeneratorTypes) =>  {
@@ -88,7 +64,7 @@ const NotionElementGenerator = (element : NotionElementGeneratorTypes) =>  {
           return (
             <div>
               <pre className="line-numbers border border-opacity-50 border-gray-500 rounded-md py-3 px-2 bg-gray-100 dark:bg-gray-900">
-                <code className={`language-${codeType}`}>{code}</code>
+                <code className={`language-${codeType} text-gray-800 dark:text-gray-200`}>{code}</code>
               </pre>
             </div>
           );

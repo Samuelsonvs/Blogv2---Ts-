@@ -5,8 +5,9 @@ import React from "react";
 import { getPostsFromDatabase } from "@/lib/notionBlogPages";
 import Container from "@/container/Container";
 import { shimmer, toBase64 } from "@/util/toBase64Blur";
+import { PostDBType } from "@/interfaces/interface";
 
-export default function index({ PostDB }: any) {
+export default function index({ PostDB }: PostDBType) {
   return (
     <Container>
       <div>
@@ -22,7 +23,7 @@ export default function index({ PostDB }: any) {
           </a>
           <span>&nbsp;blog posts</span>
         </h2>
-        {PostDB.map((post: any, idx: number) => {
+        {PostDB.map((post, idx: number) => {
           const date = new Date(post.last_edited_time).toLocaleString("en-US", {
             month: "short",
             day: "2-digit",
@@ -45,15 +46,15 @@ export default function index({ PostDB }: any) {
                 />
                 <div className="opacity-70">{date}</div>
                 <div className="text-center text-2xl">
-                  <div>{properties.Title.rich_text[0].text.content}</div>
+                  <div>{properties.Title.rich_text[0].plain_text}</div>
                 </div>
                 <div className="py-3">
-                  {properties.Preview.rich_text[0].text.content}
+                  {properties.Preview.rich_text[0].plain_text}
                 </div>
                 <div>
                   <Link
                     href="/blog/[slug]"
-                    as={`blog/${properties.Slug.rich_text[0].text.content}`}
+                    as={`blog/${properties.Slug.rich_text[0].plain_text}`}
                   >
                     <a className="text-blue-700 text-xl hover:underline">
                       Continue reading ➞

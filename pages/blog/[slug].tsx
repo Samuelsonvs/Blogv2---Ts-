@@ -6,26 +6,8 @@ import {
   getPages,
 } from "@/lib/notionBlogPages";
 import NotionElementGenerator from "@/components/NotionElementGenerator";
+import { NotionElementGeneratorTypes } from "@/interfaces/interface";
 import Container from "@/container/Container";
-
-interface NotionElementGeneratorTypes {
-  [key: string]: any;
-  variable: {
-    text: [
-      {
-        text: {
-          content: string;
-        };
-      }
-    ];
-  };
-  image: {
-    file: {
-      url: string;
-    };
-  };
-  type: string;
-}
 
 export default function Post({ post }: any) {
   return (
@@ -45,7 +27,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const database = await getPostsFromDatabase();
   return {
     paths: database.map((page: any) => ({
-      params: { slug: page.properties.Slug.rich_text[0].text.content },
+      params: { slug: page.properties.Slug.rich_text[0].plain_text },
     })),
     fallback: false,
   };
@@ -54,10 +36,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async (
   context: GetStaticPropsContext
 ) => {
-  const { slug }: any = context.params;
+  const { slug }:any = context.params;
 
-  const postID = await getPostsFromSlug(slug);
+  const postObject:any = await getPostsFromSlug(slug);
+  const postID = postObject[0].properties.PageID.title[0].plain_text
   const post = await getPages(postID);
+
   return {
     props: {
       post,

@@ -25,19 +25,15 @@ export const getPages = async (id: any) => {
 
 export const getPostsFromSlug = async (slug: any) => {
   const databaseId = process.env.NOTION_POSTS_DATABASE_ID || "";
-  const postInfos = await notion.databases.query({
+  const { results } = await notion.databases.query({
     database_id: databaseId,
-    sorts: [
-      {
-        direction: "ascending",
-        timestamp: "created_time",
-      },
-    ],
+    filter: {
+      property: "Slug",
+      text: {
+        contains: slug
+      }
+    },
   });
 
-  const post: any = postInfos.results.filter(
-    (post: any) => post.properties.Slug.rich_text[0].text.content === slug
-  );
-  const postID = post[0].properties.PageID.title[0].text.content;
-  return postID;
+  return results;
 };

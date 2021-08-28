@@ -222,3 +222,52 @@ export interface NotionElementGeneratorTypes {
   };
   type: string;
 }
+
+export interface PostDBType {
+  PostDB : [
+    {
+      id: string,
+      last_edited_time: string,
+      properties: {
+        Column: {
+          files: [
+            {
+              file: {
+                url: string
+              },
+              name:string
+            }
+          ]
+        },
+        PageID: {
+          title : [
+            {
+              plain_text: string
+            }
+          ]
+        },
+        Preview: {
+          rich_text: [
+            {
+              plain_text: string
+            }
+          ]
+        },
+        Slug: {
+          rich_text: [
+            {
+              plain_text: string
+            }
+          ]
+        },
+        Title: {
+          rich_text: [
+            {
+              plain_text: string
+            }
+          ]
+        }
+      }
+    }
+  ]
+  }

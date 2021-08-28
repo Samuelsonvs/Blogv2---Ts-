@@ -10,8 +10,8 @@ const NotionElementGenerator = (element : NotionElementGeneratorTypes) =>  {
     const content = element.type === "unsupported" ? "unsupported" : element.type === "image" ? "image" : element[type]?.text[0]?.text?.content
     const sizes = element.image?.caption?.[0] ? element.image.caption[0].text.content.split(",") : ["400","500"]
     const codeBlock = element.type === "numbered_list_item" ? element[type]?.text[0]?.text?.content.split(',,,') : null
-    const codeType = codeBlock ? codeBlock[0].trim() : null
-    const code = codeBlock ? codeBlock[1] : null
+    const codeType = codeBlock && codeBlock[0].trim()
+    const code = codeBlock && codeBlock[1]
     useEffect(() => {
       Prism.highlightAll();
     }, []);
@@ -25,7 +25,7 @@ const NotionElementGenerator = (element : NotionElementGeneratorTypes) =>  {
         case "image":
             return (
               <div className="py-3">
-                <Image src={element[type].file.url} className="rounded-xl" placeholder="blur" blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(500, 334))}`} width={sizes[0]} height={sizes[1]} alt={"notion-image"} /> 
+                <Image src={element[type].file.url} className="rounded-xl" placeholder="blur" blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(640, 427))}`} width={sizes[0]} height={sizes[1]} alt={"notion-image"} /> 
               </div>
             )
         case "heading_1":

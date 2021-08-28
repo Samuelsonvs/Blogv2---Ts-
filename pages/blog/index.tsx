@@ -7,7 +7,6 @@ import Container from '@/container/Container';
 import { shimmer, toBase64 } from '@/util/toBase64Blur';
 
 export default function index({PostDB}: any) {
-    console.log(PostDB)
     return (
         <Container>
             <div>
@@ -23,7 +22,7 @@ export default function index({PostDB}: any) {
                 );
                 const properties = post.properties
                 return (
-                    <article key={post.id} className="py-2 flex flex-col items-center">
+                    <article key={post.id} className="py-2">
                         <div className="p-5 border-2 border-gray-500/50 rounded-xl">
                             <Image className="rounded-xl" placeholder="blur" blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(640, 427))}`} src={properties.Column.files[0].file.url} alt={properties.Column.files[0].name} width={640} height={427} />
                             <div className="opacity-70">
@@ -61,6 +60,6 @@ export const getStaticProps: GetStaticProps = async (
       props: {
         PostDB,
       },
-      revalidate: 60,
+      revalidate: 1,
     };
   };

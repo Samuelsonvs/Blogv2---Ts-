@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Image from "next/image";
 import { shimmer, toBase64 } from "@/util/toBase64Blur";
-import Prism from "prismjs";
 import { NotionElementGeneratorTypes } from "@/interfaces/interface";
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import docco from "@/styles/docco";
 
 const NotionElementGenerator = (element: NotionElementGeneratorTypes) => {
   const type = element.type;
@@ -21,9 +22,6 @@ const NotionElementGenerator = (element: NotionElementGeneratorTypes) => {
       : null;
   const codeType = codeBlock && codeBlock[0].trim();
   const code = codeBlock && codeBlock[1];
-  useEffect(() => {
-    Prism.highlightAll();
-  }, []);
   switch (type) {
     case "paragraph":
       return (
@@ -74,13 +72,9 @@ const NotionElementGenerator = (element: NotionElementGeneratorTypes) => {
     case "numbered_list_item":
       return (
         <div>
-          <pre className="line-numbers border border-opacity-50 border-gray-500 rounded-md py-3 px-2 bg-gray-100 dark:bg-gray-900">
-            <code
-              className={`language-${codeType} text-gray-800 dark:text-gray-200`}
-            >
-              {code}
-            </code>
-          </pre>
+          <SyntaxHighlighter language={codeType} style={docco} className="bg-gray-200 dark:bg-gray-400 rounded-xl">
+            {code}
+          </SyntaxHighlighter>
         </div>
       );
     case "to_do":

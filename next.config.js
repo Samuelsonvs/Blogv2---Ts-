@@ -18,21 +18,20 @@ module.exports = {
     ];
   },
   images: {
-    domains: ['s3.us-west-2.amazonaws.com']
+    domains: ["s3.us-west-2.amazonaws.com"],
   },
-  presets: ['next/babel'],
+  presets: ["next/babel"],
   plugins: [
+    ["transform-define"],
     [
-      'transform-define'
-    ],
-    [
-      'prismjs', {
-        'languages': ['javascript', 'css', 'html', 'jsx'],
-        'plugins': ['line-numbers', 'show-language', 'copy-to-clipboard'],
-        'theme': 'default',
-        'css': true
+      "prismjs",
+      {
+        languages: ["javascript", "css", "html", "jsx"],
+        plugins: ["line-numbers", "show-language", "copy-to-clipboard"],
+        theme: "default",
+        css: true,
       },
-    ]
+    ],
   ],
 };
 

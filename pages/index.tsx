@@ -30,11 +30,7 @@ export default function Notionpage({
         </div>
         <div className="mt-7">
           {page.map((section: any, idx: number) => {
-            return (
-              <div key={idx}>
-                {NotionElementGenerator(section)}
-              </div>
-            );
+            return <div key={idx}>{NotionElementGenerator(section)}</div>;
           })}
         </div>
         <div>

@@ -40,48 +40,48 @@ export interface NotionDB {
   };
 }
 export interface NotionPrisma extends NotionDB {
-    page: [
-      {
-        heading_1: {
-          text: [
-            {
-              plain_text: string;
-            }
-          ];
-        };
-        type: string;
-      },
-      {
-        heading_2: {
-          text: [
-            {
-              plain_text: string;
-            }
-          ];
-        };
-        type: string;
-      },
-      {
-        heading_3: {
-          text: [
-            {
-              plain_text: string;
-            }
-          ];
-        };
-        type: string;
-      },
-      {
-        paragraph: {
-          text: [
-            {
-              plain_text: string;
-            }
-          ];
-        };
-        type: string;
-      }
-    ]; 
+  page: [
+    {
+      heading_1: {
+        text: [
+          {
+            plain_text: string;
+          }
+        ];
+      };
+      type: string;
+    },
+    {
+      heading_2: {
+        text: [
+          {
+            plain_text: string;
+          }
+        ];
+      };
+      type: string;
+    },
+    {
+      heading_3: {
+        text: [
+          {
+            plain_text: string;
+          }
+        ];
+      };
+      type: string;
+    },
+    {
+      paragraph: {
+        text: [
+          {
+            plain_text: string;
+          }
+        ];
+      };
+      type: string;
+    }
+  ];
   initialContacts: any;
   totalCount: {
     _count: {
@@ -199,26 +199,26 @@ export interface contactInfo {
 
 export interface NotionElementGeneratorTypes {
   [key: string]: any;
-    variable: {
-      text : [
-        {
-          text: {
-            content: string
-          }
-        }
-      ]
+  variable: {
+    text: [
+      {
+        text: {
+          content: string;
+        };
+      }
+    ];
+  };
+  image: {
+    file: {
+      url: string;
     };
-    image: {
-      file : {
-        url: string
-      },
-      caption?: [
-        {
-          text: {
-            content: string
-          }
-        }
-      ]
-    };
-    type: string
+    caption?: [
+      {
+        text: {
+          content: string;
+        };
+      }
+    ];
+  };
+  type: string;
 }

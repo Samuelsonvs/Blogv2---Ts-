@@ -8,7 +8,7 @@ import SvgCreator from "@/components/SvgCreator";
 const navList = [
   { name: "Home", route: "/" },
   { name: "Blog", route: "/blog" },
-  { name: "Dev.to", route: "/devto/item?page=1"},
+  { name: "Dev.to", route: "/devto/item?page=1" },
   { name: "Projects", route: "/projects" },
 ];
 
@@ -92,29 +92,29 @@ export default function Navbar({
                   />
                 </SvgCreator>
               ))}
-              </button>
-            <Transition
-              className="bg-white dark:bg-black absolute top-0 right-0 left-0 bottom-0 rounded-md"
-              show={isShowing}
-              enter="transition-opacity duration-75"
-              enterFrom="opacity-0"
-              enterTo="opacity-100"
-              leave="transition-opacity duration-150"
-              leaveFrom="opacity-100"
-              leaveTo="opacity-0"
-            >
-              <ul className="h-full flex justify-evenly items-center">
-                {navList.map((item) => (
-                  <li key={item.name}>
-                    <Link href={item.route} passHref scroll={false}>
-                      <a className="hover:bg-gray-100 focus:bg-gray-100 dark:hover:bg-gray-900 dark:focus:bg-gray-900 px-3 py-2 rounded-md text-sm lg:text-base font-medium">
-                        {item.name}
-                      </a>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </Transition>
+          </button>
+          <Transition
+            className="bg-white dark:bg-black absolute top-0 right-0 left-0 bottom-0 rounded-md"
+            show={isShowing}
+            enter="transition-opacity duration-75"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="transition-opacity duration-150"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <ul className="h-full flex justify-evenly items-center">
+              {navList.map((item) => (
+                <li key={item.name}>
+                  <Link href={item.route} passHref scroll={false}>
+                    <a className="hover:bg-gray-100 focus:bg-gray-100 dark:hover:bg-gray-900 dark:focus:bg-gray-900 px-3 py-2 rounded-md text-sm lg:text-base font-medium">
+                      {item.name}
+                    </a>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </Transition>
         </div>
         {/* mobile finish  */}
       </nav>

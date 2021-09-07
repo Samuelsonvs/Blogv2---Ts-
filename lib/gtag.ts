@@ -1,5 +1,4 @@
 export const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID
-
 interface GA {
   action: string,
   category: string,

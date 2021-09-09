@@ -36,6 +36,7 @@ export default function index({ PostDB }: PostDBType) {
                 <Image
                   className="rounded-xl"
                   placeholder="blur"
+                  priority={true}
                   blurDataURL={`data:image/svg+xml;base64,${toBase64(
                     shimmer(640, 427)
                   )}`}

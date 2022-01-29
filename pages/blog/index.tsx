@@ -1,4 +1,8 @@
-import { GetStaticProps, GetStaticPropsContext } from "next";
+import {
+  GetStaticProps,
+  GetStaticPropsContext,
+  GetServerSideProps,
+} from "next";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -71,14 +75,11 @@ export default function index({ PostDB }: PostDBType) {
   );
 }
 
-export const getStaticProps: GetStaticProps = async (
-  context: GetStaticPropsContext
-) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const PostDB = await getPostsFromDatabase();
   return {
     props: {
       PostDB,
     },
-    revalidate: 60,
   };
 };
